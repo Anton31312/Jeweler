@@ -15,5 +15,9 @@
         <Style TargetType="TextBox">
             <Setter Property="FontFamily" Value="Comic Sans MS"/>
         </Style>
+
+        <Style TargetType="ComboBox">
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
+        </Style>
     </Application.Resources>
 </Application>

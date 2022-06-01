@@ -21,7 +21,6 @@ namespace Jeweler.Windows
     /// </summary>
     public partial class AuthWindow : Window
     {
-        int flag = 0;
         public AuthWindow()
         {
             InitializeComponent();
@@ -56,22 +55,21 @@ namespace Jeweler.Windows
         {
             try
             {
-                if (UserSearch.GetUser(txtLogin.Text, txtPassword.Text) && flag == 0 || UserSearch.GetUser(txtLogin.Text, txtPassword.Text) && txtCapcha.Text == GetCapcha())
+                if (UserSearch.GetUser(txtLogin.Text, txtPassword.Text) || UserSearch.GetUser(txtLogin.Text, txtPassword.Text) && txtCapcha.Text == GetCapcha())
                 {
-                    MainWindow userWindow = new MainWindow();
+                    MainWindow adminWindow = new MainWindow();
                     this.Hide();
-                    userWindow.ShowDialog();
+                    adminWindow.ShowDialog();
                     this.Show();
                 }
                 else
                 {
                     MessageBox.Show("Пользователя с такими данными не существует");
-                    flag++;
                     tbTitleCapcha.Visibility = Visibility.Visible;
                     txtCapcha.Visibility = Visibility.Visible;
                     tbCapcha.Visibility = Visibility.Visible;
                     btnUpdate.Visibility = Visibility.Visible;
-                    GetCapcha();
+                    tbCapcha.Text = GetCapcha();
                 }
             }
             catch (Exception ex)
@@ -79,6 +77,14 @@ namespace Jeweler.Windows
                 MessageBox.Show(ex.Message);
             }
 
+        }
+
+        private void btnAuthGuest_Click(object sender, RoutedEventArgs e)
+        {
+            ClientAndManagerWindow clientAndManagerWindow = new ClientAndManagerWindow();
+            this.Hide();
+            clientAndManagerWindow.ShowDialog();
+            this.Show();
         }
     }
 }

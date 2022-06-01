@@ -10,11 +10,9 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Jeweler.Windows;
 
-namespace Jeweler
+namespace Jeweler.Windows
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
@@ -24,6 +22,36 @@ namespace Jeweler
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void cmbSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void cmbFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void lvListProduct_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
