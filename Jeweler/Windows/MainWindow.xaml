@@ -42,14 +42,12 @@
                    VerticalAlignment="Center">
             <TextBlock Text="Поиск: "
                        FontSize="25" 
-                       FontFamily="Tw Cen MT"
                        Margin="10 0"
                        Foreground="#FFFFFF"/>
             <TextBox x:Name="txtSearch"
                      Width="220"
                      Height="30"
                      FontSize="20"
-                     FontFamily="Tw Cen MT"
                      Margin="20 0"
                      TextChanged="txtSearch_TextChanged"/>
 
@@ -57,7 +55,6 @@
                       Width="220"
                       Height="30"
                       FontSize="20"
-                      FontFamily="Tw Cen MT"
                       Margin="20 0"
                       IsEditable="True"
                       SelectionChanged="cmbSort_SelectionChanged"/>
@@ -66,7 +63,6 @@
                      Width="220"
                      Height="30"
                      FontSize="20"
-                     FontFamily="Tw Cen MT"
                      Margin="20 0"
                      IsEditable="True"
                      SelectionChanged="cmbFilter_SelectionChanged"/>
@@ -75,7 +71,7 @@
         <!-- Список материалов -->
 
         <ListView x:Name="lvListProduct"
-                  Grid.Row="2" FontFamily="Tw Cen MT"
+                  Grid.Row="2"
                   SelectionMode="Multiple"
                   SelectionChanged="lvListProduct_SelectionChanged">
             <ListView.ItemTemplate>

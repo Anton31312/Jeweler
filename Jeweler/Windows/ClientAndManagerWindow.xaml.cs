@@ -37,10 +37,10 @@ namespace Jeweler.Windows
 
             // Поиск
             listProduct = listProduct.
-                Where(i => i.ProductName.ToLower().Contains(txtSearch.Text.ToLower()) || 
-                i.ProductManufature.NameManufacture.ToLower().Contains(txtSearch.Text.ToLower()) ||
-                i.ProductSupplier.NameSupplier.ToLower().Contains(txtSearch.Text.ToLower())).
-                ToList();
+            Where(i => i.ProductName.ToLower().Contains(txtSearch.Text.ToLower()) ||
+            i.ProductManufature.NameManufacture.ToLower().Contains(txtSearch.Text.ToLower()) ||
+            i.ProductSupplier.NameSupplier.ToLower().Contains(txtSearch.Text.ToLower())).
+            ToList();
 
             // Сортировка
             switch (cmbSort.SelectedIndex)
@@ -69,18 +69,24 @@ namespace Jeweler.Windows
         public ClientAndManagerWindow()
         {
             InitializeComponent();
+            try
+            {
+                cmbSort.ItemsSource = listSort;
+                cmbSort.SelectedIndex = 0;
 
-            cmbSort.ItemsSource = listSort;
-            cmbSort.SelectedIndex = 0;
+                manufature = AppData.Context.ProductManufature.ToList();
 
-            manufature = AppData.Context.ProductManufature.ToList();
+                manufature.Insert(0, new ProductManufature { NameManufacture = "Все производители" }); // добавление в список элемента "Все производители"
+                cmbFilter.ItemsSource = manufature; // заполнеие ComboBox для фильтрации
+                cmbFilter.DisplayMemberPath = "NameManufacture";
+                cmbFilter.SelectedIndex = 0;
 
-            manufature.Insert(0, new ProductManufature { NameManufacture = "Все производители" }); // добавление в список элемента "Все производители"
-            cmbFilter.ItemsSource = manufature; // заполнеие ComboBox для фильтрации
-            cmbFilter.DisplayMemberPath = "NameManufacture";
-            cmbFilter.SelectedIndex = 0;
-
-            Filter();
+                Filter();
+            }
+            catch
+            {
+                MessageBox.Show("Warning x0\nПроизошла непредвиденная ошибка\nПотеряно соединение с базой данных");
+            }
         }
 
         private void cmbFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
